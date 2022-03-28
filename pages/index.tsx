@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
+import BmiStats from '../components/BmiStats'
 
 const Home: NextPage = () => {
   const [height, setHeight] = useState<Number>(NaN)
@@ -50,13 +51,14 @@ const Home: NextPage = () => {
   }, [bmi])
 
   return (
-    <div className="flex min-h-screen flex-col items-center ">
+    <div className="flex min-h-screen flex-col items-center">
       <Head>
         <title>BMI Calculator</title>
+        <meta name="robots" content="noindex" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center bg-bmi-blue px-20 text-center font-dela">
+      <main className="flex w-full flex-1 flex-col items-center justify-evenly bg-bmi-blue px-20 text-center font-dela">
         <div className="bg-inherit-100 card w-96 shadow-xl">
           <figure>
             <h2
@@ -72,7 +74,7 @@ const Home: NextPage = () => {
                 autoComplete="off"
                 value={heightFeet ? String(heightFeet) : ''}
                 placeholder="feet"
-                className="input input-ghost w-1/2 appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl focus:outline focus:outline-bmi-lemon"
+                className="input input-ghost w-1/2 appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl text-bmi-lemon placeholder:text-bmi-lemon focus:outline focus:outline-bmi-lemon"
                 onChange={handleHeightFeetChange}
               />
               <input
@@ -80,7 +82,7 @@ const Home: NextPage = () => {
                 autoComplete="off"
                 value={heightInches ? String(heightInches) : ''}
                 placeholder="inches"
-                className="input input-ghost w-1/2 appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl focus:outline focus:outline-bmi-lemon"
+                className="input input-ghost w-1/2 appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl text-bmi-lemon placeholder:text-bmi-lemon placeholder:opacity-70 focus:outline focus:outline-bmi-lemon"
                 onChange={handleHeightInchesChange}
               />
             </div>
@@ -89,11 +91,14 @@ const Home: NextPage = () => {
               autoComplete="off"
               value={weight ? String(weight) : ''}
               placeholder="weight"
-              className="input input-ghost appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl focus:outline focus:outline-bmi-lemon"
+              className="input input-ghost appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl text-bmi-lemon placeholder:text-bmi-lemon placeholder:opacity-70 focus:outline focus:outline-bmi-lemon"
               onChange={handleWeightChange}
             ></input>
           </div>
         </div>
+
+        {/* BMI stats */}
+        <BmiStats />
       </main>
     </div>
   )

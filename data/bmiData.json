@@ -1,0 +1,22 @@
+[
+  {
+    "name": "underweight",
+    "range": "18.5-24.9",
+    "color": "text-blue-300"
+  },
+  {
+    "name": "normal weight",
+    "range": "18.5-24.9",
+    "color": "text-bmi-green"
+  },
+  {
+    "name": "overweight",
+    "range": "25-29.9",
+    "color": "text-bmi-red"
+  },
+  {
+    "name": "obesity",
+    "range": "30+",
+    "color": "text-red-800"
+  }
+]
