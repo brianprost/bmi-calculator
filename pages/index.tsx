@@ -110,7 +110,11 @@ const Home: NextPage = () => {
         />
 
         {/* For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: */}
-        <link rel="apple-touch-icon" sizes="57x57" href="/favicon/favicon-57.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="57x57"
+          href="/favicon/favicon-57.png"
+        />
 
         {/* For IE10 Metro */}
         <meta name="msapplication-TileColor" content="#FFFFFF" />
