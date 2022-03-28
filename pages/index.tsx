@@ -7,6 +7,8 @@ const Home: NextPage = () => {
   const [heightFeet, setHeightFeet] = useState<Number>(0)
   const [heightInches, setHeightInches] = useState<Number>(0)
   const [weight, setWeight] = useState<Number>(NaN)
+  const [bmi, setBmi] = useState<Number>(+height + +weight)
+  const [bmiRangeColor, setBmiRangeColor] = useState<String>('')
 
   const handleHeightFeetChange = (e: any) => {
     setHeightFeet(e.target.value)
@@ -19,7 +21,6 @@ const Home: NextPage = () => {
   const handleWeightChange = (e: any) => {
     setWeight(e.target.value)
   }
-  const [bmi, setBmi] = useState<Number>(+height + +weight)
 
   // set height
   useEffect(() => {
@@ -31,42 +32,64 @@ const Home: NextPage = () => {
     setBmi((703 * +weight) / Math.pow(+height, 2))
   }, [height, weight, heightFeet, heightInches])
 
+  // set BMI color
+  useEffect(() => {
+    let bmiColor: string
+    {
+      0 < bmi && bmi < 18.5
+        ? (bmiColor = `text-blue-300`)
+        : bmi < 25
+        ? (bmiColor = `text-bmi-green`)
+        : bmi < 30
+        ? (bmiColor = `text-bmi-red`)
+        : bmi > 30
+        ? (bmiColor = `text-red-800`)
+        : (bmiColor = `text-white`)
+    }
+    setBmiRangeColor(bmiColor)
+  }, [bmi])
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="flex min-h-screen flex-col items-center ">
       <Head>
         <title>BMI Calculator</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center bg-emerald-600 px-20 text-center font-dela">
+      <main className="flex w-full flex-1 flex-col items-center justify-center bg-bmi-blue px-20 text-center font-dela">
         <div className="bg-inherit-100 card w-96 shadow-xl">
           <figure>
-            <h2 className="my-auto text-6xl font-bold text-amber-400">
-              {height && weight ? bmi.toFixed(2) : 'BMI'}
+            <h2
+              className={`my-auto text-6xl font-bold ${bmiRangeColor} drop-shadow-md`}
+            >
+              {height && weight ? bmi.toFixed(1) : 'BMI'}
             </h2>
           </figure>
           <div className="card-body">
             <div className="flex w-full flex-row gap-1" id="height-inputs">
               <input
                 type="text"
+                autoComplete="off"
                 value={heightFeet ? String(heightFeet) : ''}
                 placeholder="feet"
-                className="input input-ghost w-1/2 appearance-none bg-base-100 text-center font-dela text-2xl focus:outline focus:outline-amber-400"
+                className="input input-ghost w-1/2 appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl focus:outline focus:outline-bmi-lemon"
                 onChange={handleHeightFeetChange}
               />
               <input
                 type="text"
+                autoComplete="off"
                 value={heightInches ? String(heightInches) : ''}
                 placeholder="inches"
-                className="input input-ghost w-1/2 appearance-none bg-base-100 text-center font-dela text-2xl focus:outline focus:outline-amber-400"
+                className="input input-ghost w-1/2 appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl focus:outline focus:outline-bmi-lemon"
                 onChange={handleHeightInchesChange}
               />
             </div>
             <input
               type="text"
+              autoComplete="off"
               value={weight ? String(weight) : ''}
               placeholder="weight"
-              className="input input-ghost appearance-none bg-base-100 text-center font-dela text-2xl focus:outline focus:outline-amber-400"
+              className="input input-ghost appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl focus:outline focus:outline-bmi-lemon"
               onChange={handleWeightChange}
             ></input>
           </div>
