@@ -1,7 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import { useState, useEffect, useImperativeHandle } from 'react'
+import { useState, useEffect } from 'react'
 
 const Home: NextPage = () => {
   const [height, setHeight] = useState<Number>(NaN)
@@ -35,11 +34,11 @@ const Home: NextPage = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
-        <title>YOU A FAT ASS</title>
+        <title>BMI Calculator</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center bg-emerald-600 px-20 text-center">
+      <main className="flex w-full flex-1 flex-col items-center justify-center bg-emerald-600 px-20 text-center font-dela">
         <div className="bg-inherit-100 card w-96 shadow-xl">
           <figure>
             <h2 className="my-auto text-6xl font-bold text-amber-400">
@@ -52,14 +51,14 @@ const Home: NextPage = () => {
                 type="text"
                 value={heightFeet ? String(heightFeet) : ''}
                 placeholder="feet"
-                className="w-1/2 text-center font-mono"
+                className="input input-ghost w-1/2 appearance-none bg-base-100 text-center font-dela text-2xl focus:outline focus:outline-amber-400"
                 onChange={handleHeightFeetChange}
               />
               <input
                 type="text"
                 value={heightInches ? String(heightInches) : ''}
                 placeholder="inches"
-                className="w-1/2 text-center font-mono"
+                className="input input-ghost w-1/2 appearance-none bg-base-100 text-center font-dela text-2xl focus:outline focus:outline-amber-400"
                 onChange={handleHeightInchesChange}
               />
             </div>
@@ -67,7 +66,7 @@ const Home: NextPage = () => {
               type="text"
               value={weight ? String(weight) : ''}
               placeholder="weight"
-              className="text-center font-mono"
+              className="input input-ghost appearance-none bg-base-100 text-center font-dela text-2xl focus:outline focus:outline-amber-400"
               onChange={handleWeightChange}
             ></input>
           </div>
