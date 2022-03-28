@@ -68,32 +68,50 @@ const Home: NextPage = () => {
             </h2>
           </figure>
           <div className="card-body">
-            <div className="flex w-full flex-row gap-1" id="height-inputs">
+            <div
+              className="flex w-full flex-row gap-1 text-bmi-lemon placeholder:text-bmi-lemon"
+              id="height-inputs"
+            >
+              <div className="group form-control w-1/2">
+                <label className="label">
+                  <span className="text-center text-xs">Feet</span>
+                </label>
+                <input
+                  type="text"
+                  autoComplete="off"
+                  value={heightFeet ? String(heightFeet) : ''}
+                  placeholder="feet"
+                  className="input input-ghost appearance-none border-2 border-bmi-lemon bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl placeholder:opacity-40"
+                  onChange={handleHeightFeetChange}
+                />
+              </div>
+              <div className="group form-control w-1/2">
+                <label className="label">
+                  <span className="text-center text-xs">Inches</span>
+                </label>
+                <input
+                  type="text"
+                  autoComplete="off"
+                  value={heightInches ? String(heightInches) : ''}
+                  placeholder="inches"
+                  className="input input-ghost appearance-none border-2 border-bmi-lemon bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl placeholder:opacity-40"
+                  onChange={handleHeightInchesChange}
+                />
+              </div>
+            </div>
+            <div className="group form-control w-full text-bmi-lemon placeholder:text-bmi-lemon">
+              <label className="label">
+                <span className="text-center text-xs">Pounds</span>
+              </label>
               <input
                 type="text"
                 autoComplete="off"
-                value={heightFeet ? String(heightFeet) : ''}
-                placeholder="feet"
-                className="input input-ghost w-1/2 appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl text-bmi-lemon placeholder:text-bmi-lemon focus:outline focus:outline-bmi-lemon"
-                onChange={handleHeightFeetChange}
-              />
-              <input
-                type="text"
-                autoComplete="off"
-                value={heightInches ? String(heightInches) : ''}
-                placeholder="inches"
-                className="input input-ghost w-1/2 appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl text-bmi-lemon placeholder:text-bmi-lemon placeholder:opacity-70 focus:outline focus:outline-bmi-lemon"
-                onChange={handleHeightInchesChange}
+                value={weight ? String(weight) : ''}
+                placeholder="weight"
+                className="input input-ghost appearance-none border-2 border-bmi-lemon bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl placeholder:opacity-40"
+                onChange={handleWeightChange}
               />
             </div>
-            <input
-              type="text"
-              autoComplete="off"
-              value={weight ? String(weight) : ''}
-              placeholder="weight"
-              className="input input-ghost appearance-none bg-bmi-blue bg-opacity-80 text-center font-dela text-2xl text-bmi-lemon placeholder:text-bmi-lemon placeholder:opacity-70 focus:outline focus:outline-bmi-lemon"
-              onChange={handleWeightChange}
-            ></input>
           </div>
         </div>
 
