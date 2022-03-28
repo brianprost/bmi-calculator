@@ -30,7 +30,7 @@ const Home: NextPage = () => {
   // set BMI
   useEffect(() => {
     setBmi((703 * +weight) / Math.pow(+height, 2))
-  }, [height, weight, heightFeet, heightInches])
+  }, [height, weight])
 
   // set BMI color
   useEffect(() => {
@@ -60,7 +60,7 @@ const Home: NextPage = () => {
         <div className="bg-inherit-100 card w-96 shadow-xl">
           <figure>
             <h2
-              className={`my-auto text-6xl font-bold ${bmiRangeColor} drop-shadow-md`}
+              className={`my-auto text-8xl font-bold ${bmiRangeColor} drop-shadow-md`}
             >
               {height && weight ? bmi.toFixed(1) : 'BMI'}
             </h2>
