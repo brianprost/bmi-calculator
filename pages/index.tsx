@@ -4,11 +4,11 @@ import { useState, useEffect } from 'react'
 import BmiStats from '../components/BmiStats'
 
 const Home: NextPage = () => {
-  const [height, setHeight] = useState<Number>(NaN)
-  const [heightFeet, setHeightFeet] = useState<Number>(0)
-  const [heightInches, setHeightInches] = useState<Number>(0)
-  const [weight, setWeight] = useState<Number>(NaN)
-  const [bmi, setBmi] = useState<Number>(+height + +weight)
+  const [height, setHeight] = useState<number>(NaN)
+  const [heightFeet, setHeightFeet] = useState<number>(0)
+  const [heightInches, setHeightInches] = useState<number>(0)
+  const [weight, setWeight] = useState<number>(NaN)
+  const [bmi, setBmi] = useState<number>(+height + +weight)
   const [bmiRangeColor, setBmiRangeColor] = useState<String>('')
 
   const handleHeightFeetChange = (e: any) => {
